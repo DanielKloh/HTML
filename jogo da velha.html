@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="uff-8">
+    <meta name="viewport" content="width=decice-width,intial-scale=1">
+    <title>Jogo da velha </title>
+    <style>
+        .btnTamanho {
+            border: none;
+            width: 180px;
+            height: 180px;
+            margin-right: -4px;
+            margin-bottom: -4px;
+            background-color: Transparent;
+
+        }
+
+        .font {
+            font-size: 100px;
+        }
+
+        .blt1 {
+            border-right: solid white 3px;
+            border-bottom: solid white 3px;
+
+        }
+
+        .blt2 {
+            border-right: solid white 3px;
+            border-bottom: solid white 3px;
+            border-left: solid white 3px;
+        }
+
+        .blt3 {
+            border-left: solid white 3px;
+            border-bottom: solid white 3px;
+        }
+
+        .blt4 {
+            border-right: solid white 3px;
+            border-bottom: solid whiteblack 3px;
+            border-top: solid white 3px;
+        }
+
+        .blt6 {
+            border-left: solid white 3px;
+            border-bottom: solid white 3px;
+            border-top: solid white 3px;
+        }
+
+        .blt7 {
+            border-right: solid white 3px;
+            border-top: solid white 3px;
+        }
+
+        .blt8 {
+            border-left: solid white 3px;
+            border-right: solid white 3px;
+            border-top: solid white 3px;
+        }
+
+        .blt9 {
+            border-left: solid white 3px;
+            border-top: solid white 3px;
+        }
+
+        .blt5 {
+            border: solid white 3px;
+        }
+
+        .centraliza {
+
+            text-align: center;
+        }
+
+        .fonte_resultado {
+            font-size: 35px;
+            width: 200px;
+            height: 200px;
+            color: white;
+        }
+        .fundo{
+            background: linear-gradient(90deg,
+            rgb(52, 230, 153) 0%,
+            rgba(0,212,225,1) 100%);
+        }
+        .divEmBranco{
+            width: 70px;
+            height: 70px;
+            background-color: Transparent;
+            border: none;
+        }
+    </style>
+</head>
+
+<body class="fundo">
+    <div class="centraliza">
+        <input class="divEmBranco" type="button" id="botao em branco" value="">
+    </div>
+    <div class="centraliza">
+        <input class="btnTamanho blt1 font" type="button" id="btn1" value=" " onclick="exibeEscolha('btn1')">
+        <input class="btnTamanho blt2 font" type="button" id="btn2" value=" " onclick="exibeEscolha('btn2')">
+        <input class="btnTamanho blt3 font" type="button" id="btn3" value=" " onclick="exibeEscolha('btn3')">
+    </div>
+    <div class="centraliza">
+        <input class="btnTamanho blt4 font" type="button" id="btn4" value=" " onclick="exibeEscolha('btn4')">
+        <input class="btnTamanho blt5 font" type="button" id="btn5" value=" " onclick="exibeEscolha('btn5')">
+        <input class="btnTamanho blt6 font" type="button" id="btn6" value=" " onclick="exibeEscolha('btn6')">
+    </div>
+    <div class="centraliza">
+        <input class="btnTamanho blt7 font" type="button" id="btn7" value=" " onclick="exibeEscolha('btn7')">
+        <input class="btnTamanho blt8 font" type="button" id="btn8" value=" " onclick="exibeEscolha('btn8')">
+        <input class="btnTamanho blt9 font" type="button" id="btn9" value=" " onclick="exibeEscolha('btn9')">
+    </div>
+
+    <div class="centraliza">
+        <input class="btnTamanho fonte_resultado " type="text" id="result" value="Vencedor: " onclick="exibeEscolha()">
+        <input class="btnTamanho fonte_resultado" type="button" id="btnRestart" value="Restart" onclick="window.location.reload()">
+    </div>
+
+
+        
+    </div>
+    <script>
+
+        var jogada = 1;
+        var ganhador = " "
+        var statusDoJogo = 0; // 0 - jogo em andamento 1 - fim do jogo
+
+        function empate(){
+            if(B1!=" " && B2!=" " && B3!=" " &&  B4!=" " && B5!=" " && B6!=" " &&B7!=" " && B8!=" " && B9!=" "){
+                alert("empate");
+            }
+        }
+
+        function exibeEscolha(parametro) {
+            if (jogada == 1) {
+                jogada = 0;
+                ganhador = "X";
+                document.getElementById(parametro).value = "X";
+            }
+            else {
+                jogada = 1;
+                ganhador = "O";
+                document.getElementById(parametro).value = "O";
+            }
+
+            var B1 = document.getElementById('btn1').value
+            var B2 = document.getElementById('btn2').value
+            var B3 = document.getElementById('btn3').value
+            var B4 = document.getElementById('btn4').value
+            var B5 = document.getElementById('btn5').value
+            var B6 = document.getElementById('btn6').value
+            var B7 = document.getElementById('btn7').value
+            var B8 = document.getElementById('btn8').value
+            var B9 = document.getElementById('btn9').value
+
+
+
+            if (B1 == B2 && B2 == B3 && B3 != " ") {
+                document.getElementById("result").value = "Vencedor: " + ganhador;
+                statusDoJogo = 1;
+                
+            }
+            if (B4 == B5 && B5 == B6 && B6 != " ") {
+                document.getElementById("result").value = "Vencedor: " + ganhador;
+                statusDoJogo = 1;
+            }
+            if (B7 == B8 && B8 == B9 && B9 != " ") {
+                document.getElementById("result").value = "Vencedor: " + ganhador;
+                statusDoJogo = 1;
+            }
+            if (B1 == B4 && B4 == B7 && B7 != " ") {
+                document.getElementById("result").value = "Vencedor: " + ganhador;
+                statusDoJogo = 1;
+            }
+            if (B2 == B5 && B5 == B8 && B8 != " ") {
+                document.getElementById("result").value = "Vencedor: " + ganhador;
+                statusDoJogo = 1;
+            }
+            if (B3 == B6 && B6 == B9 && B9 != " ") {
+                document.getElementById("result").value = "Vencedor: " + ganhador;
+                statusDoJogo = 1;
+            }
+            if (B1 == B5 && B5 == B9 && B9 != " ") {
+                document.getElementById("result").value = "Vencedor: " + ganhador;
+                statusDoJogo = 1;
+
+            }
+            if (B3 == B5 && B5 == B7 && B7 != " ") {
+                document.getElementById("result").value = "Vencedor: " + ganhador;
+                statusDoJogo = 1;
+            }
+            
+            //desabilita os botoes quando algem vencer
+            if (statusDoJogo == 1) {
+                document.getElementById("btn1").setAttribute("disabled", "");
+                document.getElementById("btn2").setAttribute("disabled", "");
+                document.getElementById("btn3").setAttribute("disabled", "");
+                document.getElementById("btn4").setAttribute("disabled", "");
+                document.getElementById("btn5").setAttribute("disabled", "");
+                document.getElementById("btn6").setAttribute("disabled", "");
+                document.getElementById("btn7").setAttribute("disabled", "");
+                document.getElementById("btn8").setAttribute("disabled", "");
+                document.getElementById("btn9").setAttribute("disabled", "");
+            }
+
+            //testa se for empate
+            else if(B1!=" " && B2!=" " && B3!=" " &&  B4!=" " && B5!=" " && B6!=" " &&B7!=" " && B8!=" " && B9!=" "){
+                setTimeout(function() { alert("EMPATE"); }, 0);
+                document.getElementById("btn1").setAttribute("disabled", "");
+                document.getElementById("btn2").setAttribute("disabled", "");
+                document.getElementById("btn3").setAttribute("disabled", "");
+                document.getElementById("btn4").setAttribute("disabled", "");
+                document.getElementById("btn5").setAttribute("disabled", "");
+                document.getElementById("btn6").setAttribute("disabled", "");
+                document.getElementById("btn7").setAttribute("disabled", "");
+                document.getElementById("btn8").setAttribute("disabled", "");
+                document.getElementById("btn9").setAttribute("disabled", "");
+            
+            }
+          
+
+        }
+    </script>
+</body>

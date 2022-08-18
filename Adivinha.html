@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinha</title>
+    <style>
+        .centrliza{
+            text-align: center;
+        }
+        .corFundo{
+            background-color: darkslategrey;
+        }
+        .corBotao{
+            border-color: aquamarine;
+            border-radius: 15px;
+            background-color: rgb(91, 236, 188);
+        }
+        .fonte{
+            font-size: 27px;
+            color:white
+        }
+        .fonteBotao{
+            font-size: 27px;
+        }
+        .tamahoTexto{
+          width: 250px;
+          height: 50px;
+          background-color: Transparent;
+        }
+        .tamanhoBotao{
+          width: 140px;
+          height: 50px;
+        }
+        .linhaEmBranco{
+            width: 70px;
+            height: 200px;
+            background-color: Transparent;
+            border: none;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body class="corFundo">
+
+    <div>
+        <input class="linhaEmBranco " type="button" id="btnvaio" value=" "></input> <!-- linha em branco -->
+    </div>
+
+    <div class="centrliza fonte">
+        <label>Informe um valor </label>
+        <input class="tamahoTexto fonte" type="text" id="valorInformado"> <!-- campo para digitar os valores -->
+    </div>
+
+    <div>
+        <input class="linhaEmBranco " type="button" id="btnvaio" value=" "></input> <!-- linha em branco -->
+    </div>
+
+    <div class="centrliza">
+        <input class="corBotao tamanhoBotao fonteBotao" type="button" id="botao" value="Comparar " onclick="resposta()"> <!-- exibe a resposta -->
+    </div>
+
+    <div class="fonte centrliza" id="result"></div>
+
+    <script>
+
+        window.valorAleatorio=0;
+        window.onload=function(e){
+            window.valorAleatorio=Math.floor(Math.random()*10);
+        }
+        
+        function resposta(){
+            var valor = document.getElementById("valorInformado").value;
+            
+            if(window.valorAleatorio==Number(valor)){
+                document.getElementById("result").innerHTML="Acertou"
+            }
+            else if(window.valorAleatorio > Number(valor)){
+                document.getElementById("result").innerHTML="Mais Alto"
+            }   
+            else if(window.valorAleatorio<Number(valor)){
+                document.getElementById("result").innerHTML="Mais Baixo"
+            }
+            else{
+                document.getElementById("result").innerHTML="Errou"
+            }
+        }
+
+    </script>
+</body>
+</html>
