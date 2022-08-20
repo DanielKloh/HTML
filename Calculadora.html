@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        .centraliza{
+            text-align: center;
+        }
+        .font{
+            font-size: 35px;
+        }
+        .campoVasio{
+            border: none;
+            height: 200px;
+        }
+        .fundo{
+            background: linear-gradient(90deg,
+            red 0%,
+            orange 100%);
+        }
+        .corBotao{
+            background: linear-gradient(90deg,
+            red 0%,
+            yellow 100%);
+        }
+    </style>
+
+</head>
+<body class="fundo">
+
+    <div>
+        <div class="centraliza campoVasio" id="vasio"></div><!-- linha em branco/vasia -->
+    </div>
+    <div class="centraliza">
+        <div class="font">
+        <label>Campo1</label>
+        <input class="font corBotao" type="text" id="CampoDeTexto">
+    </div>
+
+    <div class="centraliza font">
+        <label>Campo2</label>
+        <input class="font corBotao" type="text" id="CampoDeTexto2">
+    </div>
+
+    <div class="centraliza font" id="Exibir resultado">Resultado:</div>
+    
+    <div class="centraliza ">
+        <input class="font corBotao"type="button" id="botao" value="soma" onclick="exibeSoma()">    
+        <input class="font corBotao" type="button" id="botao" value="subtração" onclick="exibirSubtracao()">   
+    </div>
+    <div>
+        <input class="font corBotao" type="button" id="botao" value="multiplicação" onclick="exibirMultiplicacao()">    
+        <input class="font corBotao" type="button" id="botao" value="divisão" onclick="exibirDivisao()"> 
+    </div>
+
+
+    <script>
+        function exibeSoma(){
+            var num1 = document.getElementById("CampoDeTexto").value;
+            var num2 = document.getElementById("CampoDeTexto2").value;
+            var tot = Number(num1) + Number(num2);
+            document.getElementById("Exibir resultado").innerHTML="A soma é "+tot
+        }
+
+        function exibirSubtracao(){
+            var num1 = document.getElementById("CampoDeTexto").value;
+            var num2 = document.getElementById("CampoDeTexto2").value;
+            var tot = Number(num1) - Number(num2);
+
+            document.getElementById("Exibir resultado").innerHTML="A subtração é "+tot
+        }
+
+        function exibirMultiplicacao(){
+            var num1 = document.getElementById("CampoDeTexto").value;
+            var num2 = document.getElementById("CampoDeTexto2").value;
+            var tot = Number(num1) * Number(num2);
+
+            document.getElementById("Exibir resultado").innerHTML="A multiplicação é "+tot
+        }
+
+        function exibirDivisao(){
+            var num1 = document.getElementById("CampoDeTexto").value;
+            var num2 = document.getElementById("CampoDeTexto2").value;
+            var tot = Number(num1) / Number(num2);
+            
+            document.getElementById("Exibir resultado").innerHTML="A divisão é "+tot
+            //alert("a divisão é " + tot);
+        }
+
+    </script>
+
+</body>
+</html>
